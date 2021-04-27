@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="比对接口返回和数据数值" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="temp" elementType="Argument">
+            <stringProp name="Argument.name">temp</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">C:\software\apache-jmeter-4.0\dependencies\lib\mysql-connector-java-5.1.31.jar,C:\software\apache-jmeter-4.0\lib\fastjson-1.2.4.jar,C:\software\apache-jmeter-4.0\lib\log4j-1.2-api-2.10.0.jar,C:\software\apache-jmeter-4.0\lib\log4j-api-2.10.0.jar,C:\software\apache-jmeter-4.0\lib\log4j-core-2.10.0.jar,C:\software\apache-jmeter-4.0\lib\log4j-slf4j-impl-2.10.0.jar,C:\software\apache-jmeter-4.0\dependencies\lib\gson-2.8.2.jar,C:\software\apache-jmeter-4.0\lib\json-20090211.jar,C:\software\apache-jmeter-4.0\dependencies\lib\SameUtil.jar,C:\software\apache-jmeter-4.0\dependencies\lib\Token.jar,C:\software\apache-jmeter-4.0\dependencies\lib\PostResult.jar,C:\software\apache-jmeter-4.0\dependencies\lib\lib</stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="获取星星接口的token" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Token的HTTP请求" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;Sig&quot;: &quot;84F0E91C74DDB1CA5465CC120E2A5F38&quot;,&#xd;
+  &quot;Data&quot;: &quot;j5tJ74cKFiGJ65Ot7NaSyZQoaYNUpSYy7hVWul9Yw26tXyLZb7F2Vf+58kGMk6GUq3d1UwSRdYksfdZT/G+NoQ==&quot;,&#xd;
+  &quot;OperatorID&quot;: &quot;740415113&quot;,&#xd;
+  &quot;TimeStamp&quot;: &quot;20180913141115&quot;,&#xd;
+  &quot;Seq&quot;: &quot;0001&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">sandbox.ccchong.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value"></stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">import org.json.JSONObject;
+import encrypt.AESUtils;
+import org.apache.jmeter.util.JMeterUtils;
+AESUtils decrypt = new AESUtils();
+String response = prev.getResponseDataAsString();
+JSONObject responseJson = new JSONObject(response);
+String Data = responseJson.getString(&quot;Data&quot;);
+String key=&quot;a2164ada0026ccf7&quot;;
+String iev=&quot;82c91325e74bef0f&quot;;
+String token = decrypt.Decrypt(Data,key,iev);
+vars.put(&quot;token&quot;,token);
+String StrData=vars.get(&quot;token&quot;);
+JSONObject JsonData = new JSONObject(StrData);
+String AccessToken=JsonData.get(&quot;AccessToken&quot;);
+JMeterUtils.setProperty(&quot;AccessToken&quot;,AccessToken);
+log.info(AccessToken+&quot;sss&quot;);</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+          <collectionProp name="Asserion.test_strings">
+            <stringProp name="-1740256935">&quot;Ret&quot;:0</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.custom_message">请求参数不合法</stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">2</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="获取星星充电station " enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="station 的 HTTP请求" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;Sig&quot;: &quot;${Sig}&quot;,&#xd;
+  &quot;Data&quot;: &quot;${Data}&quot;,&#xd;
+  &quot;OperatorID&quot;: &quot;${OperatorID}&quot;,&#xd;
+  &quot;TimeStamp&quot;: &quot;${TimeStamp}&quot;,&#xd;
+  &quot;Seq&quot;: &quot;${Seq}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">sandbox.ccchong.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__P(AccessToken,)}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value"></stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">import encrypt.AESUtils;
+import org.apache.jmeter.util.JMeterUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+AESUtils decrypt = new AESUtils();
+String response = prev.getResponseDataAsString();
+JSONObject jsonObject = new JSONObject(response);
+String Data =jsonObject.getString(&quot;Data&quot;);
+String key=&quot;a2164ada0026ccf7&quot;;
+String iev=&quot;82c91325e74bef0f&quot;;
+String Datas = decrypt.Decrypt(Data,key,iev);
+JSONObject stations = new JSONObject(Datas);
+JSONArray StationInfos=stations.getJSONArray(&quot;StationInfos&quot;);
+//vars.put(&quot;temp_${PageNo}&quot;,StationInfos.toString());
+//String temp_${PageNo} = vars.get(&quot;temp_${PageNo}&quot;);
+
+//log.info(temp_1+temp_2);
+ 
+String station=StationInfos.toString();
+JMeterUtils.setProperty(&quot;station&quot;,station);
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">import HMacMD5.HMacMD5;
+import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
+String key=&quot;a2164ada0026ccf7&quot;;
+String iev=&quot;82c91325e74bef0f&quot;;
+String sig=&quot;9af2e7b2d7562ad5&quot;;
+String operatorId =&quot;740415113&quot;;
+Map srcPara = new HashMap();
+srcPara.put(&quot;LastQueryTime&quot;,&quot;&quot;);
+srcPara.put(&quot;PageNo&quot;,1);
+srcPara.put(&quot;PageSize&quot;,100);
+HMacMD5 hmacmd5 = new HMacMD5();
+JSONObject jsonobject=hmacmd5.PostResult(srcPara, operatorId, key, iev, sig);
+vars.put(&quot;Sig&quot;,jsonobject.getString(&quot;Sig&quot;));
+vars.put(&quot;Data&quot;,jsonobject.getString(&quot;Data&quot;));
+vars.put(&quot;OperatorID&quot;,jsonobject.getString(&quot;OperatorID&quot;));
+vars.put(&quot;TimeStamp&quot;,jsonobject.getString(&quot;TimeStamp&quot;));
+vars.put(&quot;Seq&quot;,jsonobject.getString(&quot;Seq&quot;));
+//将系统参数和业务参数进行MD5签名
+String signStr = SignUtils.getSignStr(params)+key;
+System.out.println(&quot;signStr: &quot;+signStr);
+String sign = SignUtils.doMD5Sign(signStr);
+System.out.println(&quot;sign 签名参数值: &quot;+sign);
+
+
+
+</stringProp>
+        </BeanShellPreProcessor>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="JDBC Station" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">test1</stringProp>
+          <stringProp name="dbUrl"></stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">evp_charge</stringProp>
+          <stringProp name="poolMax">0</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">evp_charge</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+
+// 获取station
+Object stationsDB=vars.getObject(&quot;stations&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(stationsDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+
+log.info(bodyList+&quot;&quot;);
+// 获取station 对比
+for(int i=0;i&lt;bodyList.size();i++){
+	JSONObject array = bodyList.getJSONObject(i);
+	array.remove(&quot;EquipmentInfos&quot;);
+	array.remove(&quot;Pictures&quot;);
+	};
+
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(dataList,bodyList);
+if (sameUtil.same(dataList,bodyList)){
+	log.info(&quot;Sucess&quot;);
+    Failure = false;
+    FailureMessage = &quot;返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+    Failure = true;
+    FailureMessage = &quot;返回信息与数据库查询结果不一致&quot;;
+	}
+
+// 获取 equipment
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
+          <stringProp name="dataSource">test1</stringProp>
+          <stringProp name="query">SELECT
+	station_id AS StationID,
+	operator_id AS OperatorID,
+	equipment_owner_id AS EquipmentOwnerID,
+	station_name AS StationName,
+	country_code AS CountryCode,
+	area_code AS AreaCode,
+	address AS Address,
+	station_tel AS StationTel,
+	service_tel AS ServiceTel,
+	station_type AS StationType,
+	station_status AS StationStatus,
+	park_nums AS ParkNums,
+	station_lng AS StationLng,
+	station_lat AS StationLat,
+	site_guide AS SiteGuide,
+	construction AS Construction,
+	match_cars AS MatchCars,
+	park_info AS ParkInfo,
+	busine_hours AS BusineHours,
+	electricity_fee AS ElectricityFee,
+	service_fee AS ServiceFee,
+	park_fee AS ParkFee,
+	payment AS Payment,
+	support_order AS SupportOrder,
+	remark AS Remark
+FROM
+	t_station_info
+WHERE
+	operator_id = &apos;313744932&apos;;
+</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Object</stringProp>
+          <stringProp name="resultVariable">stations</stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell断言" enabled="true">
+          <stringProp name="BeanShellAssertion.query">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+
+// 获取station
+Object stationsDB=vars.getObject(&quot;stations&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(stationsDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+
+for(int i=0;i&lt;bodyList.size();i++){
+	JSONObject array = bodyList.getJSONObject(i);
+	array.remove(&quot;EquipmentInfos&quot;);
+	array.remove(&quot;Pictures&quot;);
+	};
+
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(dataList,bodyList);
+if (sameUtil.same(dataList,bodyList)){
+	log.info(&quot;Sucess&quot;);
+    Failure = false;
+    FailureMessage = &quot;station 返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+	log.info(&quot;fail&quot;);
+	 Failure = true;
+    FailureMessage = &quot;station 返回信息与数据库查询结果不一致&quot;;
+	}
+
+// 获取 equipment
+
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellAssertion.filename"></stringProp>
+          <stringProp name="BeanShellAssertion.parameters"></stringProp>
+          <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+        </BeanShellAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="JDBC_Picture" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">test2</stringProp>
+          <stringProp name="dbUrl"></stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">evp_charge</stringProp>
+          <stringProp name="poolMax">0</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">evp_charge</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+// 比对station picture 
+Object stationsDB=vars.getObject(&quot;stations&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(stationsDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+StringBuilder sb = new StringBuilder();
+ sb.append(&quot;[&quot;);
+for(int i=0;i&lt;bodyList.size();i++){
+	JSONObject array = bodyList.getJSONObject(i);
+     String value = array.getString(&quot;Pictures&quot;).replaceAll(&quot;\&quot;&quot;,&quot;&quot;).replaceAll(&quot;[\\[\\]]&quot;, &quot;&quot;);
+     sb.append(&quot;{&quot;).append(&quot;\&quot;&quot;).append(&quot;Pictures&quot;).append(&quot;\&quot;:\&quot;&quot;).append(value)
+
+                        .append(&quot;\&quot;&quot;).append(&quot;}&quot;).append(&quot;,&quot;);
+     
+	};
+	sb.deleteCharAt(sb.lastIndexOf(&quot;,&quot;));
+
+        sb.append(&quot;]&quot;);   
+        
+String DBString =dataList.toJSONString();
+log.info(DBString);
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(DBString,sb.toString());
+if(sameUtil.same(DBString,sb.toString())){
+    log.info(&quot;Success&quot;);
+    Failure = false;
+    FailureMessage = &quot;返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+	log.info(&quot;fail&quot;);
+	 Failure = true;
+    FailureMessage = &quot;返回信息与数据库查询结果不一致&quot;;
+	}
+
+
+// 获取 equipment
+
+
+
+
+
+
+
+
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
+          <stringProp name="dataSource">test2</stringProp>
+          <stringProp name="query">SELECT
+	pictures AS Pictures
+FROM
+	t_station_info
+WHERE
+	operator_id = &apos;313744932&apos;;
+	</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Object</stringProp>
+          <stringProp name="resultVariable">stations</stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell断言" enabled="true">
+          <stringProp name="BeanShellAssertion.query">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+// 比对station picture 
+Object stationsDB=vars.getObject(&quot;stations&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(stationsDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+StringBuilder sb = new StringBuilder();
+ sb.append(&quot;[&quot;);
+for(int i=0;i&lt;bodyList.size();i++){
+	JSONObject array = bodyList.getJSONObject(i);
+     String value = array.getString(&quot;Pictures&quot;).replaceAll(&quot;\&quot;&quot;,&quot;&quot;).replaceAll(&quot;[\\[\\]]&quot;, &quot;&quot;);
+     sb.append(&quot;{&quot;).append(&quot;\&quot;&quot;).append(&quot;Pictures&quot;).append(&quot;\&quot;:\&quot;&quot;).append(value)
+
+                        .append(&quot;\&quot;&quot;).append(&quot;}&quot;).append(&quot;,&quot;);
+     
+	};
+	sb.deleteCharAt(sb.lastIndexOf(&quot;,&quot;));
+
+        sb.append(&quot;]&quot;);   
+        
+String DBString =dataList.toJSONString();
+log.info(DBString);
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(DBString,sb.toString());
+if(sameUtil.same(DBString,sb.toString())){
+	log.info(&quot;Success&quot;);
+    Failure = false;
+    FailureMessage = &quot;picture 返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+	log.info(&quot;fail&quot;);
+	 Failure = true;
+    FailureMessage = &quot;picture 返回信息与数据库查询结果不一致&quot;;
+	}
+
+
+// 获取 equipment
+
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellAssertion.filename"></stringProp>
+          <stringProp name="BeanShellAssertion.parameters"></stringProp>
+          <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+        </BeanShellAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="JDBC equipment" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">test3</stringProp>
+          <stringProp name="dbUrl"></stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">evp_charge</stringProp>
+          <stringProp name="poolMax">0</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">evp_charge</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+
+// 获取station
+Object equipmentDB=vars.getObject(&quot;equipments&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(equipmentDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+// 获取equipment
+Map map = new HashMap();
+StringBuilder sb = new StringBuilder();
+ sb.append(&quot;[&quot;);
+for(int i =0;i&lt;bodyList.size();i++){
+	
+	JSONObject arrays = bodyList.getJSONObject(i);
+     String StationID = arrays.getString(&quot;StationID&quot;);
+     String equipment = arrays.getString(&quot;EquipmentInfos&quot;);
+     JSONArray jsonArray1 = JSONArray.parseArray(equipment);
+     for(int m =0;m&lt;jsonArray1.size();m++){
+     	String jsonObject1 = jsonArray1.getJSONObject(m).toJSONString();
+     	sb.append(&quot;{&quot;).append(&quot;\&quot;&quot;).append(&quot;StationID&quot;).append(&quot;\&quot;:\&quot;&quot;).append(StationID).append(&quot;\&quot;&quot;).append(&quot;,&quot;).append(jsonObject1.substring(1,jsonObject1.length()-1)).append(&quot;}&quot;).append(&quot;,&quot;);	
+     	}
+	}
+   sb.deleteCharAt(sb.lastIndexOf(&quot;,&quot;));
+
+   sb.append(&quot;]&quot;);  
+   
+JSONArray array = JSON.parseArray(sb.toString());//接口返回值 转换成JSONArray
+// 剔除 connectors
+for(int i=0;i&lt;array.size();i++){
+	JSONObject array = array.getJSONObject(i);
+	array.remove(&quot;ConnectorInfos&quot;);
+	};
+
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(array,dataList);
+if (sameUtil.same(array,dataList)){
+	log.info(&quot;Sucess&quot;);
+    Failure = false;
+    FailureMessage = &quot;返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+    Failure = true;
+    FailureMessage = &quot;返回信息与数据库查询结果不一致&quot;;
+	}
+
+
+
+
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
+          <stringProp name="dataSource">test3</stringProp>
+          <stringProp name="query">SELECT
+	b.station_id AS StationID,
+	a.equipment_id AS EquipmentID,
+	a.equipment_name AS EquipmentName,
+	a.manufacturer_id AS ManufacturerID,
+	a.manufacturer_name AS ManufacturerName,
+	a.equipment_model AS EquipmentModel,
+	a.production_date AS ProductionDate,
+	a.equipment_type AS EquipmentType,
+	a.equipment_lng AS EquipmentLng,
+	a.equipment_lat AS EquipmentLat,
+	a.power AS Power
+FROM
+	t_equipment_info a,
+	t_station_info b
+WHERE
+	a.station_info_id = b.id
+AND b.operator_id = &apos;313744932&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Object</stringProp>
+          <stringProp name="resultVariable">equipments</stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell断言" enabled="true">
+          <stringProp name="BeanShellAssertion.query">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+
+// 获取station
+Object equipmentDB=vars.getObject(&quot;equipments&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(equipmentDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+// 获取equipment
+Map map = new HashMap();
+StringBuilder sb = new StringBuilder();
+ sb.append(&quot;[&quot;);
+for(int i =0;i&lt;bodyList.size();i++){
+	
+	JSONObject arrays = bodyList.getJSONObject(i);
+     String StationID = arrays.getString(&quot;StationID&quot;);
+     String equipment = arrays.getString(&quot;EquipmentInfos&quot;);
+     JSONArray jsonArray1 = JSONArray.parseArray(equipment);
+     for(int m =0;m&lt;jsonArray1.size();m++){
+     	String jsonObject1 = jsonArray1.getJSONObject(m).toJSONString();
+     	sb.append(&quot;{&quot;).append(&quot;\&quot;&quot;).append(&quot;StationID&quot;).append(&quot;\&quot;:\&quot;&quot;).append(StationID).append(&quot;\&quot;&quot;).append(&quot;,&quot;).append(jsonObject1.substring(1,jsonObject1.length()-1)).append(&quot;}&quot;).append(&quot;,&quot;);	
+     	}
+	}
+   sb.deleteCharAt(sb.lastIndexOf(&quot;,&quot;));
+
+   sb.append(&quot;]&quot;);  
+   
+JSONArray array = JSON.parseArray(sb.toString());//接口返回值 转换成JSONArray
+// 剔除 connectors
+for(int i=0;i&lt;array.size();i++){
+	JSONObject array = array.getJSONObject(i);
+	array.remove(&quot;ConnectorInfos&quot;);
+	};
+
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(array,dataList);
+if (sameUtil.same(array,dataList)){
+	log.info(&quot;Sucess&quot;);
+    Failure = false;
+    FailureMessage = &quot;equipment返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+    Failure = true;
+    FailureMessage = &quot;equipment 返回信息与数据库查询结果不一致&quot;;
+	}
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellAssertion.filename"></stringProp>
+          <stringProp name="BeanShellAssertion.parameters"></stringProp>
+          <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+        </BeanShellAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="JDBC connector" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">test4</stringProp>
+          <stringProp name="dbUrl"></stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">evp_charge</stringProp>
+          <stringProp name="poolMax">0</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">evp_charge</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+
+// 获取connectorids
+Object connectoridDB=vars.getObject(&quot;connectorids&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(connectoridDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+// 拼接接口的connectorids
+StringBuilder sb = new StringBuilder();
+ sb.append(&quot;[&quot;);
+for(int i =0;i&lt;bodyList.size();i++){
+	JSONObject arrays = bodyList.getJSONObject(i);
+     String equipment = arrays.getString(&quot;EquipmentInfos&quot;);
+     JSONArray jsonArray1 = JSONArray.parseArray(equipment);
+     for(int m =0;m&lt;jsonArray1.size();m++){
+     	String EquipmentID = jsonArray1.getJSONObject(m).getString(&quot;EquipmentID&quot;);
+     	String jsonObject1 = jsonArray1.getJSONObject(m).getString(&quot;ConnectorInfos&quot;);
+     	JSONArray jsonArray = JSONArray.parseArray(jsonObject1);
+     	for(int n =0;n&lt;jsonArray.size();n++){
+     		String connect = jsonArray.getJSONObject(n).toJSONString();
+     		sb.append(&quot;{&quot;).append(&quot;\&quot;&quot;).append(&quot;EquipmentID&quot;).append(&quot;\&quot;:\&quot;&quot;).append(EquipmentID).append(&quot;\&quot;&quot;).append(&quot;,&quot;).append(connect.substring(1,connect.length()-1)).append(&quot;}&quot;).append(&quot;,&quot;);	
+     		}
+     	
+     	}
+	}
+   sb.deleteCharAt(sb.lastIndexOf(&quot;,&quot;));
+
+   sb.append(&quot;]&quot;);  
+JSONArray array = JSON.parseArray(sb.toString());//接口返回值 转换成JSONArray
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(array,dataList);
+if (sameUtil.same(array,dataList)){
+	log.info(&quot;Sucess&quot;);
+    Failure = false;
+    FailureMessage = &quot;返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+    Failure = true;
+    FailureMessage = &quot;返回信息与数据库查询结果不一致&quot;;
+	}
+
+
+
+
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
+          <stringProp name="dataSource">test4</stringProp>
+          <stringProp name="query">SELECT
+	b.equipment_id AS EquipmentID,
+	a.connector_id AS ConnectorID,
+	a.connector_name AS ConnectorName,
+	a.connector_type AS ConnectorType,
+	a.voltage_upper_limits AS VoltageUpperLimits,
+	a.voltage_lower_limits AS VoltageLowerLimits,
+	a.current AS Current,
+	a.power AS Power,
+	a.park_no AS ParkNo,
+	a.national_standard AS NationalStandard
+FROM
+	t_connector_info a,
+	t_equipment_info b
+WHERE
+	a.equipment_info_id = b.id
+AND b.operator_id = &apos;313744932&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Object</stringProp>
+          <stringProp name="resultVariable">connectorids</stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell断言" enabled="true">
+          <stringProp name="BeanShellAssertion.query">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import SameTest.JsonSameUtil;
+
+
+// 获取connectorids
+Object connectoridDB=vars.getObject(&quot;connectorids&quot;);
+String station=props.get(&quot;station&quot;);
+JSONArray dataList = JSON.toJSON(connectoridDB);// 返回得到数据库值
+JSONArray bodyList = JSON.parseArray(station);// 返回得到接口返回值
+// 拼接接口的connectorids
+StringBuilder sb = new StringBuilder();
+ sb.append(&quot;[&quot;);
+for(int i =0;i&lt;bodyList.size();i++){
+	JSONObject arrays = bodyList.getJSONObject(i);
+     String equipment = arrays.getString(&quot;EquipmentInfos&quot;);
+     JSONArray jsonArray1 = JSONArray.parseArray(equipment);
+     for(int m =0;m&lt;jsonArray1.size();m++){
+     	String EquipmentID = jsonArray1.getJSONObject(m).getString(&quot;EquipmentID&quot;);
+     	String jsonObject1 = jsonArray1.getJSONObject(m).getString(&quot;ConnectorInfos&quot;);
+     	JSONArray jsonArray = JSONArray.parseArray(jsonObject1);
+     	for(int n =0;n&lt;jsonArray.size();n++){
+     		String connect = jsonArray.getJSONObject(n).toJSONString();
+     		sb.append(&quot;{&quot;).append(&quot;\&quot;&quot;).append(&quot;EquipmentID&quot;).append(&quot;\&quot;:\&quot;&quot;).append(EquipmentID).append(&quot;\&quot;&quot;).append(&quot;,&quot;).append(connect.substring(1,connect.length()-1)).append(&quot;}&quot;).append(&quot;,&quot;);	
+     		}
+     	
+     	}
+	}
+   sb.deleteCharAt(sb.lastIndexOf(&quot;,&quot;));
+
+   sb.append(&quot;]&quot;);  
+JSONArray array = JSON.parseArray(sb.toString());//接口返回值 转换成JSONArray
+JsonSameUtil sameUtil= new JsonSameUtil();
+sameUtil.same(array,dataList);
+if (sameUtil.same(array,dataList)){
+	log.info(&quot;Sucess&quot;);
+    Failure = false;
+    FailureMessage = &quot;connection返回信息与数据库查询结果一致&quot;; 
+	}
+else{
+    Failure = true;
+    FailureMessage = &quot;connection返回信息与数据库查询结果不一致&quot;;
+	}
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellAssertion.filename"></stringProp>
+          <stringProp name="BeanShellAssertion.parameters"></stringProp>
+          <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+        </BeanShellAssertion>
+        <hashTree/>
+        <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="断言结果" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="结果比对信息" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">688</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">600</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">H:\jemter\sap.txt</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">emp_org</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP请求" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">hcm.ucarinc.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/sap/opu/odata/SAP/ZHRWF02_SRV/ZHRWF23_005Set?$filter=ICode%20eq%20%27DOWN%27%20and%20IPernr%20eq%20%27${emp_org}%27</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">zh-CN</stringProp>
+              </elementProp>
+              <elementProp name="Connection" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="Cookie" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">MYSAPSSO2=AjExMDAgAA9wb3J0YWw6MTAwMDMyMjiIABNiYXNpY2F1dGhlbnRpY2F0aW9uAQAIMTAwMDMyMjgCAAMwMDADAANQUDEEAAwyMDE5MDYwMzAyNDgFAAQAAAAICgAIMTAwMDMyMjj%2FAQQwggEABgkqhkiG9w0BBwKggfIwge8CAQExCzAJBgUrDgMCGgUAMAsGCSqGSIb3DQEHATGBzzCBzAIBATAiMB0xDDAKBgNVBAMTA1BQMTENMAsGA1UECxMESjJFRQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTkwNjAzMDI0ODUxWjAjBgkqhkiG9w0BCQQxFgQUEcKnVKpF%2Fk98LByltvwLysLBoWEwCQYHKoZIzjgEAwQuMCwCFFeY9YVhIZGy9Tlh7Fr9eqNIkmOmAhQlW2QFQRgjNPXupIojAGrMoYYyzA%3D%3D; sap-usercontext=sap-client=900; SAP_SESSIONID_EP1_900=8dG1f0TDcAs39maSrocQWgyLmV-FqhHpiX8ADCn0clM%3d</stringProp>
+              </elementProp>
+              <elementProp name="DataServiceVersion" elementType="Header">
+                <stringProp name="Header.name">DataServiceVersion</stringProp>
+                <stringProp name="Header.value">2.0</stringProp>
+              </elementProp>
+              <elementProp name="Host" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">hcm.ucarinc.com</stringProp>
+              </elementProp>
+              <elementProp name="MaxDataServiceVersion" elementType="Header">
+                <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                <stringProp name="Header.value">2.0</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">http://hcm.ucarinc.com/sap/bc/ui5_ui5/sap/zucarinc_ab/index.html</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="处理json" enabled="true">
+            <boolProp name="resetInterpreter">true</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.util.JMeterUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+String response = prev.getResponseDataAsString();
+JSONObject jsonObject= JSONObject.parseObject(response);
+String data=jsonObject.getString(&quot;d&quot;);
+JSONObject jsonObject= JSONObject.parseObject(data);
+String results=jsonObject.getString(&quot;results&quot;);
+JSONArray bodyList = JSON.parseArray(results);// 返回得到接口返回值
+// 获取equipment
+Map map = new HashMap();
+for(int i =0;i&lt;bodyList.size();i++){
+	
+	JSONObject arrays = bodyList.getJSONObject(i);
+     String super_emp_code = arrays.getString(&quot;Pernr1&quot;);
+     String emp_code = arrays.getString(&quot;Pernr2&quot;);
+     map.put(emp_code,super_emp_code);
+    
+     	}
+
+log.info(&quot;map====&quot;+map.size()+map);
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
