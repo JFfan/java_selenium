@@ -29,7 +29,7 @@ public class TestLogin extends CaseBase{
 		driver.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		loginpro = new LoginPro(driver);
 	    homepagepro = new HomePagePro(driver);
-	    String url = "http://127.0.0.1/zentao/user-login.html";
+	    String url = "http://zentao.hikvisionmall.com";
 //	    String url = "http://wysh.site";
 	    driver.get(url);
 	    try {
